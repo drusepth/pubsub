@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171010200404) do
+ActiveRecord::Schema.define(version: 20171010201938) do
+
+  create_table "publishers", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.string "homepage_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "solicitations", force: :cascade do |t|
+    t.integer "publisher_id"
+    t.datetime "starts_at"
+    t.datetime "ends_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["publisher_id"], name: "index_solicitations_on_publisher_id"
+  end
 
   create_table "stories", force: :cascade do |t|
     t.string "title"
@@ -20,6 +37,16 @@ ActiveRecord::Schema.define(version: 20171010200404) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_stories_on_user_id"
+  end
+
+  create_table "submissions", force: :cascade do |t|
+    t.integer "story_id"
+    t.integer "solicitation_id"
+    t.datetime "submitted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["solicitation_id"], name: "index_submissions_on_solicitation_id"
+    t.index ["story_id"], name: "index_submissions_on_story_id"
   end
 
   create_table "users", force: :cascade do |t|

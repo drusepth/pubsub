@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Publisher:</strong>
+  <%= @solicitation.publisher %>
+</p>
+
+<p>
+  <strong>Starts at:</strong>
+  <%= @solicitation.starts_at %>
+</p>
+
+<p>
+  <strong>Ends at:</strong>
+  <%= @solicitation.ends_at %>
+</p>
+
+<%= link_to 'Edit', edit_solicitation_path(@solicitation) %> |
+<%= link_to 'Back', solicitations_path %>

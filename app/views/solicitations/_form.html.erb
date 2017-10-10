@@ -1,0 +1,32 @@
+<%= form_with(model: solicitation, local: true) do |form| %>
+  <% if solicitation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(solicitation.errors.count, "error") %> prohibited this solicitation from being saved:</h2>
+
+      <ul>
+      <% solicitation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :publisher_id %>
+    <%= form.text_field :publisher_id, id: :solicitation_publisher_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :starts_at %>
+    <%= form.datetime_select :starts_at, id: :solicitation_starts_at %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ends_at %>
+    <%= form.datetime_select :ends_at, id: :solicitation_ends_at %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

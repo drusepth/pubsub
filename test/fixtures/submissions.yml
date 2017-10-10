@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  story: one
+  solicitation: one
+  submitted_at: 2017-10-10 22:19:38
+
+two:
+  story: two
+  solicitation: two
+  submitted_at: 2017-10-10 22:19:38
