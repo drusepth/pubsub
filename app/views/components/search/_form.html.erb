@@ -1,0 +1,29 @@
+<%= form_tag(results_path, method: :post, class: 'search-form y-offset-lg') do %>
+  <p>
+    I wrote a
+  </p>
+  <%=
+    collection_select(
+      :search,
+      :genre,
+      Genre.all,
+      :id,
+      :name,
+      {
+        prompt: 'choose a genre...'
+      }
+    )
+  %>
+  <p>
+    story<br />
+    that is
+  </p>
+  <input type="text" name="search[wordcount]" value="500" class="wordcount" />
+  <p class="strong">
+    words long,<br />
+    and I want to publish it.
+  </p>
+
+  <br />
+  <input type="submit" class="btn btn-primary btn-lg y-offset-sm" value="Find publishers" />
+<% end %>

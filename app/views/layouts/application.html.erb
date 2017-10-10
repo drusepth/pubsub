@@ -9,8 +9,14 @@
   </head>
 
   <body>
+    <%= render partial: 'components/navbar' %>
+
+    <div class="container">
+      <%= yield %>
+    </div>
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <%= yield %>
+
   </body>
 </html>

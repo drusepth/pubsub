@@ -10,7 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171010201938) do
+ActiveRecord::Schema.define(version: 20171010214002) do
+
+  create_table "genres", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "genres_solicitations", force: :cascade do |t|
+    t.integer "genre_id"
+    t.integer "solicitation_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["genre_id"], name: "index_genres_solicitations_on_genre_id"
+    t.index ["solicitation_id"], name: "index_genres_solicitations_on_solicitation_id"
+  end
+
+  create_table "genres_stories", force: :cascade do |t|
+    t.integer "genre_id"
+    t.integer "story_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["genre_id"], name: "index_genres_stories_on_genre_id"
+    t.index ["story_id"], name: "index_genres_stories_on_story_id"
+  end
 
   create_table "publishers", force: :cascade do |t|
     t.string "name"
@@ -26,6 +50,8 @@ ActiveRecord::Schema.define(version: 20171010201938) do
     t.datetime "ends_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "minimum_wordcount"
+    t.integer "maximum_wordcount"
     t.index ["publisher_id"], name: "index_solicitations_on_publisher_id"
   end
 
