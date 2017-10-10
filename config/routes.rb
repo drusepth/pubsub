@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   scope '/search', controller: :search do
-    post 'results'
+    get 'results'
   end
 
   resources :stories

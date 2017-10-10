@@ -1,0 +1,45 @@
+<div class="card my-4">
+  <h5 class="card-header">Open solicitation</h5>
+  <div class="card-body">
+    <p>
+      <%
+        solicitation_genres = solicitation.genres.pluck(:name)
+      %>
+      <%= publisher.name %> is currently accepting submissions
+      <% if solicitation_genres.any? %>
+        in the
+        <strong><%= solicitation_genres.to_sentence %></strong>
+        <%= "genre".pluralize(solicitation_genres.count) %>
+      <% end %>
+      until
+      <%= solicitation.ends_at.strftime("%A at %I%p, %B %d") %>.
+    </p>
+
+    <div class="row">
+      <div class="col-lg-12">
+        <ul class="list-unstyled mb-0">
+          <% if solicitation.cents_per_word %>
+            <li>
+              [$]
+              Offering
+              <%= number_to_currency solicitation.cents_per_word / 100.0 %>
+              per word
+            </li>
+          <% end %>
+          <% if solicitation.cents_flat_paid %>
+            <li>
+              [$]
+              Paying
+              <%= number_to_currency solicitation.cents_flat_paid / 100.0 %>
+              upon acceptance
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer text-muted">
+    <%= link_to 'Submit your story', '#', class: 'btn btn-outline-primary' %>
+    <%= link_to 'Bookmark this', '#', class: 'btn btn-outline-info' %>
+  </div>
+</div>

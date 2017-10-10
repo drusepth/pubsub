@@ -1,0 +1,10 @@
+<div class="col-md-4">
+  <%= render partial: 'components/publishers/sidebar/admin_actions', locals: { publisher: publisher } %>
+
+  <% publisher.solicitations.each do |solicitation| %>
+    <%= render partial: 'components/publishers/sidebar/solicitation', locals: { publisher: publisher, solicitation: solicitation } %>
+  <% end %>
+
+  <%= render partial: 'components/publishers/sidebar/submit_ad' %>
+
+</div>

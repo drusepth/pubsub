@@ -1,19 +1,36 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-lg-8">
+    <h1 class="mt-4"><%= @publisher.name %></h1>
 
-<p>
-  <strong>Name:</strong>
-  <%= @publisher.name %>
-</p>
+    <p class="lead">
+      <%= link_to 'Publisher homepage', @publisher.homepage_url if @publisher.homepage_url.present? %>
+    </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @publisher.description %>
-</p>
+    <hr />
+    <p>
+      <% if @publisher.solicitations.any? %>
+        Currently accepting submissions.
+      <% else %>
+        Not currently accepting submissions.
+      <% end %>
+    </p>
+    <hr />
 
-<p>
-  <strong>Homepage url:</strong>
-  <%= @publisher.homepage_url %>
-</p>
+    <img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">
+    <hr />
 
-<%= link_to 'Edit', edit_publisher_path(@publisher) %> |
-<%= link_to 'Back', publishers_path %>
+    <p class="lead">
+      <%= @publisher.description %>
+    </p>
+    <hr />
+
+    <%= render partial: 'components/publishers/analytics_bar' %>
+    <hr />
+
+    <%= render partial: 'components/comments/form' %>
+    <%= render partial: 'components/comments/list' %>
+  </div>
+
+  <%= render partial: 'components/publishers/sidebar', locals: { publisher: @publisher } %>
+
+</div>
