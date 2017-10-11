@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  resources :publisher_bookmarks
-  resources :solicitation_bookmarks
   devise_for :users
 
   scope '/search', controller: :search do
@@ -11,6 +9,8 @@ Rails.application.routes.draw do
   resources :solicitations
   resources :publishers
   resources :comments
+  resources :publisher_bookmarks
+  resources :solicitation_bookmarks
 
   root to: 'search#index'
 end

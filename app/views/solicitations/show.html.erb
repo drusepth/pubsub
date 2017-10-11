@@ -1,19 +1,58 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
 
-<p>
-  <strong>Publisher:</strong>
-  <%= @solicitation.publisher %>
-</p>
+  <div class="col-lg-4">
+    <h1 class="my-4">Looking for:</h1>
+    <div class="list-group">
+      <% @solicitation.publisher.solicitations.each do |solicitation| %>
+        <%= link_to solicitation, class: "list-group-item #{'active' if solicitation.id == @solicitation.id}" do %>
+          <%= solicitation.minimum_wordcount %>&mdash;<%= solicitation.maximum_wordcount %>-word
+          <%= solicitation.genres.pluck(:name).map(&:pluralize).to_sentence %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 
-<p>
-  <strong>Starts at:</strong>
-  <%= @solicitation.starts_at %>
-</p>
+  <div class="col-lg-8">
+    <div class="card mt-4">
+      <img class="card-img-top img-fluid" src="http://placehold.it/900x400" alt="">
+      <div class="card-body">
+        <h3 class="card-title"><%= @solicitation.publisher.name %></h3>
+        <% if @solicitation.cents_per_word %>
+          <h4>
+            Paying <%= number_to_currency(@solicitation.cents_per_word / 100.0) %> per word
+          </h4>
+        <% end %>
+        <% if @solicitation.cents_flat_paid %>
+          <h4>
+            Paying <%= number_to_currency(@solicitation.cents_flat_paid / 100.0) %> per story
+          </h4>
+        <% end %>
+        <p class="card-text">
+          This soliciation is open until <%= @solicitation.ends_at.strftime("%A at %I%p, %B %d") %>.
+        </p>
+        <!-- <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
+        4.0 stars -->
+        <%= link_to 'Edit this solicitation', edit_solicitation_path(@solicitation) %>
+      </div>
+    </div>
 
-<p>
-  <strong>Ends at:</strong>
-  <%= @solicitation.ends_at %>
-</p>
+    <div class="card card-outline-secondary my-4">
+      <div class="card-header">
+        Submit now (form?)
+      </div>
+      <div class="card-body">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
+        <small class="text-muted">Posted by Anonymous on 3/1/17</small>
+        <hr>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
+        <small class="text-muted">Posted by Anonymous on 3/1/17</small>
+        <hr>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
+        <small class="text-muted">Posted by Anonymous on 3/1/17</small>
+        <hr>
+        <a href="#" class="btn btn-success">Leave a Review</a>
+      </div>
+    </div>
 
-<%= link_to 'Edit', edit_solicitation_path(@solicitation) %> |
-<%= link_to 'Back', solicitations_path %>
+  </div>
+</div>

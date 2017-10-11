@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171010233640) do
+ActiveRecord::Schema.define(version: 20171011004759) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "publisher_id"
@@ -46,12 +46,30 @@ ActiveRecord::Schema.define(version: 20171010233640) do
     t.index ["story_id"], name: "index_genres_stories_on_story_id"
   end
 
+  create_table "publisher_bookmarks", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "publisher_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["publisher_id"], name: "index_publisher_bookmarks_on_publisher_id"
+    t.index ["user_id"], name: "index_publisher_bookmarks_on_user_id"
+  end
+
   create_table "publishers", force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.string "homepage_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "solicitation_bookmarks", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "solicitation_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["solicitation_id"], name: "index_solicitation_bookmarks_on_solicitation_id"
+    t.index ["user_id"], name: "index_solicitation_bookmarks_on_user_id"
   end
 
   create_table "solicitations", force: :cascade do |t|
