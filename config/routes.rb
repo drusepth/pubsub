@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :stories
   resources :solicitations
   resources :publishers
+  resources :comments
 
   root to: 'search#index'
 end

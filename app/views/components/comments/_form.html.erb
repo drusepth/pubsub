@@ -1,11 +1,12 @@
 <div class="card my-4">
   <h5 class="card-header">Leave a Comment:</h5>
   <div class="card-body">
-    <form>
+    <%= form_for(Comment.new) do |f| %>
+      <%= f.hidden_field :publisher_id, value: publisher.id %>
       <div class="form-group">
-        <textarea class="form-control" rows="3"></textarea>
+        <%= f.text_area :body, class: 'form-control', rows: 3 %>
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+      <%= f.submit 'Submit', class: 'btn btn-primary btn-outline-primary' %>
+    <% end %>
   </div>
 </div>

@@ -1,0 +1,16 @@
+<div class="card mb-4">
+  <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+  <div class="card-body">
+    <h2 class="card-title"><%= publisher.name %></h2>
+    <p class="card-text">
+      <%= publisher.description %>
+    </p>
+    <%= link_to publisher, class: 'btn btn-outline-primary' do %>
+      See <%= pluralize(publisher.solicitations.count, 'open solicitation') %> &rarr;
+    </a>
+    <% end %>
+  </div>
+  <div class="card-footer text-muted">
+    <%= publisher.genres.pluck(:name).map { |genre| "##{genre}" }.to_sentence %>
+  </div>
+</div>

@@ -27,8 +27,10 @@
     <%= render partial: 'components/publishers/analytics_bar' %>
     <hr />
 
-    <%= render partial: 'components/comments/form' %>
-    <%= render partial: 'components/comments/list' %>
+    <% if user_signed_in? %>
+      <%= render partial: 'components/comments/form', locals: { publisher: @publisher } %>
+    <% end %>
+    <%= render partial: 'components/comments/list', locals: { comments: @publisher.comments.order('id DESC') } %>
   </div>
 
   <%= render partial: 'components/publishers/sidebar', locals: { publisher: @publisher } %>

@@ -1,2 +1,15 @@
-<h1>Search#results</h1>
-<p>Find me in app/views/search/results.html.erb</p>
+<div class="row">
+  <div class="col-md-8">
+    <h1 class="my-4">
+      Publishers
+      <small>
+        for <%= @wordcount %>-word <%= @genre.name %> stories
+      </small>
+    </h1>
+
+    <% @publishers.each do |publisher| %>
+      <%= render partial: 'components/search/publisher', locals: { publisher: publisher } %>
+    <% end %>
+
+  </div>
+</div>

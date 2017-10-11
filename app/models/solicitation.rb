@@ -9,7 +9,7 @@ class Solicitation < ApplicationRecord
   end
 
   scope :accepting_wordcount, -> (wordcount) do
-    where('minimum_wordcount < ?', wordcount)
-    .where('maximum_wordcount > ?', wordcount)
+    where('minimum_wordcount <= ?', wordcount)
+    .where('maximum_wordcount >= ?', wordcount)
   end
 end

@@ -3,9 +3,14 @@ class SearchController < ApplicationController
   end
 
   def results
-    @solicitations = Solicitation.all
+    @genre = Genre.find(search_params[:genre])
+    @wordcount = search_params[:wordcount]
+
+    solicitations = Solicitation.all
       .of_genre(search_params[:genre].to_i)
       .accepting_wordcount(search_params[:wordcount].to_i)
+
+    @publishers = solicitations.map(&:publisher)
   end
 
   private

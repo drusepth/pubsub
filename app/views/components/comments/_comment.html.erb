@@ -1,0 +1,14 @@
+<div class="media mb-4">
+  <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+  <div class="media-body">
+    <h5 class="mt-0">
+      <%= comment.user && comment.user.name ? comment.user.name : 'Anonymous' %>
+    </h5>
+    <p>
+      <%= comment.body %>
+    </p>
+    <div class="text-muted">
+      <%= time_ago_in_words comment.created_at %> ago
+    </div>
+  </div>
+</div>
