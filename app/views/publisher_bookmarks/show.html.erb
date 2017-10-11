@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @publisher_bookmark.user %>
+</p>
+
+<p>
+  <strong>Publisher:</strong>
+  <%= @publisher_bookmark.publisher %>
+</p>
+
+<%= link_to 'Edit', edit_publisher_bookmark_path(@publisher_bookmark) %> |
+<%= link_to 'Back', publisher_bookmarks_path %>

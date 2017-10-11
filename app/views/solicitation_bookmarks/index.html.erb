@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Solicitation Bookmarks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Solicitation</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @solicitation_bookmarks.each do |solicitation_bookmark| %>
+      <tr>
+        <td><%= solicitation_bookmark.user %></td>
+        <td><%= solicitation_bookmark.solicitation %></td>
+        <td><%= link_to 'Show', solicitation_bookmark %></td>
+        <td><%= link_to 'Edit', edit_solicitation_bookmark_path(solicitation_bookmark) %></td>
+        <td><%= link_to 'Destroy', solicitation_bookmark, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Solicitation Bookmark', new_solicitation_bookmark_path %>

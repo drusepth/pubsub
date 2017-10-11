@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @solicitation_bookmark.user %>
+</p>
+
+<p>
+  <strong>Solicitation:</strong>
+  <%= @solicitation_bookmark.solicitation %>
+</p>
+
+<%= link_to 'Edit', edit_solicitation_bookmark_path(@solicitation_bookmark) %> |
+<%= link_to 'Back', solicitation_bookmarks_path %>
