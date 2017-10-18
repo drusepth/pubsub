@@ -12,22 +12,4 @@ class Solicitation < ApplicationRecord
     where('minimum_wordcount <= ?', wordcount)
     .where('maximum_wordcount >= ?', wordcount)
   end
-
-  scope :not_open_yet, -> do
-    where('starts_at > ?', DateTime.current)
-  end
-
-  scope :open, -> do
-    where('starts_at <= ?', DateTime.current)
-    .where('ends_at > ?', DateTime.current)
-  end
-
-  scope :open_now_or_in_the_future, -> do
-    where('ends_at > ?', DateTime.current)
-  end
-
-  scope :already_closed, -> do
-    where('ends_at < ?', DateTime.current)
-  end
-
 end

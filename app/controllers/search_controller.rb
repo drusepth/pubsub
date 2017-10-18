@@ -9,7 +9,6 @@ class SearchController < ApplicationController
     solicitations = Solicitation.all
       .of_genre(search_params[:genre].to_i)
       .accepting_wordcount(search_params[:wordcount].to_i)
-      .open
 
     @publishers = solicitations.map(&:publisher)
   end
